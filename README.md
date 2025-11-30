@@ -1,6 +1,6 @@
 GitHub Actions
 <img width="3815" height="1285" alt="GitHubActions" src="https://github.com/user-attachments/assets/51a86b35-4d70-445f-9cd6-b7cd0b90b20f" />
-https://github.com/im353-max/assignment12
+https://github.com/im353-max/assignment12/actions
 
 DockerHub
 <img width="3797" height="1780" alt="Dockerhub" src="https://github.com/user-attachments/assets/ceaf81e3-56f0-4f08-8e56-356b1754cbba" />
