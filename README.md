@@ -1,3 +1,40 @@
+GitHub Actions
+<img width="3815" height="1285" alt="GitHubActions" src="https://github.com/user-attachments/assets/51a86b35-4d70-445f-9cd6-b7cd0b90b20f" />
+https://github.com/im353-max/assignment12
+
+DockerHub
+<img width="3797" height="1780" alt="Dockerhub" src="https://github.com/user-attachments/assets/ceaf81e3-56f0-4f08-8e56-356b1754cbba" />
+https://hub.docker.com/repository/docker/imanayath/601_module12/general
+
+/health Read Health
+<img width="2137" height="1750" alt="GetHealth" src="https://github.com/user-attachments/assets/7ee29c82-f08f-4759-bd6c-d42bc9eed759" />
+
+/auth/register Register
+<img width="2075" height="1785" alt="RegisterAuth" src="https://github.com/user-attachments/assets/f09a77bc-9296-44f2-b5c3-b7f313423af0" />
+
+/auth/login Login Json
+<img width="1895" height="1807" alt="LoginAuth" src="https://github.com/user-attachments/assets/6701d558-ffaf-458e-bcb4-02ccf8892f13" />
+
+/auth/token Login From
+<img width="1605" height="1805" alt="AuthToken" src="https://github.com/user-attachments/assets/3373996f-23fd-4366-8816-2c31fb4d5061" />
+
+/calculations List Calculations
+<img width="1555" height="1802" alt="Calculations" src="https://github.com/user-attachments/assets/e3b82743-4d6d-4132-baef-51bb07e48f50" />
+
+/calculations Create Calculation
+<img width="1560" height="1760" alt="CreateCalculation" src="https://github.com/user-attachments/assets/f5e88e33-b15f-40c7-9307-bf8bb0397de7" />
+
+/calculations/{calc_id} Get Calculation
+<img width="1552" height="1625" alt="GetCalculation" src="https://github.com/user-attachments/assets/e7e283ca-4ade-40e3-95c6-28674fa9e203" />
+
+/calculations/{calc_id} Update Calculation
+<img width="1582" height="1787" alt="UpdateCalculation" src="https://github.com/user-attachments/assets/4314a8ca-d393-42e7-8e57-e7e44f68b60e" />
+
+/calculations/{calc_id} Delete Calculation
+<img width="1572" height="1570" alt="DeleteCalculation" src="https://github.com/user-attachments/assets/46e8fb35-9bce-494b-ac31-6d4a4e0ac160" />
+
+
+
 # 📦 Project Setup
 
 ---
