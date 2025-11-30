@@ -1,0 +1,7 @@
+The registration route helps to register a new user, and stores the user in the user model. The login route helps confirm a user into using an application by using the username from the user model. A pydantic model can automatically validate provided data against defined types and additional constraints. If the data does not conform to the schema, pydantic raises a ValidationError. Also, pydantic models can easily be converted to other formats, like dictionaries or JSON strings, which is useful for API responses or data storage. Another thing, is that pydantic can also automatically generate JSON Schema definitions from the models, which is valuable for documenting APIs.
+
+ 
+Integration testing with pytest and docker endpoints remains reliable during testing and makes sure that the application does not break while working in development and later further deployed in production.By doing all the testing in the beginning, a user has to do less testing later.
+
+ 
+For security measures, it is important that the right user can access certain endpoints. Token generation helps the user keep the same user in the right session, so the user is not conflicting with other users. Also hashing helps to prevent security leaks, if the passwords are exposed.
