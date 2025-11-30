@@ -2,6 +2,9 @@ from datetime import datetime, timezone
 from uuid import uuid4
 import pytest
 import requests
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 # Import the Calculation model for direct model tests.
 from app.models.calculation import Calculation
@@ -56,8 +59,8 @@ def test_user_registration(base_url: str):
         "last_name": "Smith",
         "email": "alice.smith@example.com",
         "username": "alicesmith",
-        "password": "SecurePass123!",
-        "confirm_password": "SecurePass123!"
+        "password": "SecurePass",
+        "confirm_password": "SecurePass"
     }
     response = requests.post(url, json=payload)
     assert response.status_code == 201, f"Expected 201 but got {response.status_code}. Response: {response.text}"
@@ -80,8 +83,8 @@ def test_user_login(base_url: str):
         "last_name": "Jones",
         "email": "bob.jones@example.com",
         "username": "bobjones",
-        "password": "SecurePass123!",
-        "confirm_password": "SecurePass123!"
+        "password": "SecurePass",
+        "confirm_password": "SecurePass"
     }
     
     # Register user
@@ -140,8 +143,8 @@ def test_create_calculation_addition(base_url: str):
         "last_name": "Adder",
         "email": f"calc.adder{uuid4()}@example.com",
         "username": f"calc_adder_{uuid4()}",
-        "password": "SecurePass123!",
-        "confirm_password": "SecurePass123!"
+        "password": "SecurePass",
+        "confirm_password": "SecurePass"
     }
     token_data = register_and_login(base_url, user_data)
     access_token = token_data["access_token"]
@@ -163,8 +166,8 @@ def test_create_calculation_subtraction(base_url: str):
         "last_name": "Subtractor",
         "email": f"calc.sub{uuid4()}@example.com",
         "username": f"calc_sub_{uuid4()}",
-        "password": "SecurePass123!",
-        "confirm_password": "SecurePass123!"
+        "password": "SecurePass",
+        "confirm_password": "SecurePass"
     }
     token_data = register_and_login(base_url, user_data)
     access_token = token_data["access_token"]
@@ -187,8 +190,8 @@ def test_create_calculation_multiplication(base_url: str):
         "last_name": "Multiplier",
         "email": f"calc.mult{uuid4()}@example.com",
         "username": f"calc_mult_{uuid4()}",
-        "password": "SecurePass123!",
-        "confirm_password": "SecurePass123!"
+        "password": "SecurePass",
+        "confirm_password": "SecurePass"
     }
     token_data = register_and_login(base_url, user_data)
     access_token = token_data["access_token"]
@@ -211,8 +214,8 @@ def test_create_calculation_division(base_url: str):
         "last_name": "Divider",
         "email": f"calc.div{uuid4()}@example.com",
         "username": f"calc_div_{uuid4()}",
-        "password": "SecurePass123!",
-        "confirm_password": "SecurePass123!"
+        "password": "SecurePass",
+        "confirm_password": "SecurePass"
     }
     token_data = register_and_login(base_url, user_data)
     access_token = token_data["access_token"]
@@ -235,8 +238,8 @@ def test_list_get_update_delete_calculation(base_url: str):
         "last_name": "CRUD",
         "email": f"calc.crud{uuid4()}@example.com",
         "username": f"calc_crud_{uuid4()}",
-        "password": "SecurePass123!",
-        "confirm_password": "SecurePass123!"
+        "password": "SecurePass",
+        "confirm_password": "SecurePass"
     }
     token_data = register_and_login(base_url, user_data)
     access_token = token_data["access_token"]

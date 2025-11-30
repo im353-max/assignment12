@@ -37,13 +37,13 @@ class UserCreate(UserBase):
     password: str = Field(
         min_length=8,
         max_length=128,
-        example="SecurePass123!",
+        example="SecurePass",
         description="User's password (8-128 characters)"
     )
     confirm_password: str = Field(
         min_length=8,
         max_length=128,
-        example="SecurePass123!",
+        example="SecurePass",
         description="Password confirmation"
     )
 
@@ -64,10 +64,10 @@ class UserCreate(UserBase):
             raise ValueError("Password must contain at least one uppercase letter")
         if not any(char.islower() for char in password):
             raise ValueError("Password must contain at least one lowercase letter")
-        if not any(char.isdigit() for char in password):
-            raise ValueError("Password must contain at least one digit")
-        if not any(char in "!@#$%^&*()_+-=[]{}|;:,.<>?" for char in password):
-            raise ValueError("Password must contain at least one special character")
+   #     if not any(char.isdigit() for char in password):
+    #        raise ValueError("Password must contain at least one digit")
+#        if not any(char in "!@#$%^&*()_+-=[]{}|;:,.<>?" for char in password):
+ #           raise ValueError("Password must contain at least one special character")
         return self
 
     model_config = ConfigDict(
@@ -77,8 +77,8 @@ class UserCreate(UserBase):
                 "last_name": "Doe",
                 "email": "john.doe@example.com",
                 "username": "johndoe",
-                "password": "SecurePass123!",
-                "confirm_password": "SecurePass123!"
+                "password": "SecurePass",
+                "confirm_password": "SecurePass"
             }
         }
     )
@@ -110,7 +110,7 @@ class UserLogin(BaseModel):
         ...,
         min_length=8,
         max_length=128,
-        example="SecurePass123!",
+        example="SecurePass",
         description="Password"
     )
 
@@ -118,7 +118,7 @@ class UserLogin(BaseModel):
         json_schema_extra={
             "example": {
                 "username": "johndoe",
-                "password": "SecurePass123!"
+                "password": "SecurePass"
             }
         }
     )

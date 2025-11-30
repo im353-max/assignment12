@@ -5,6 +5,8 @@ from typing import List
 from fastapi import Body, FastAPI, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
+from sqlalchemy import or_
+from sqlalchemy.exc import IntegrityError
 
 from app.auth.dependencies import get_current_active_user
 from app.models.calculation import Calculation
@@ -29,6 +31,19 @@ app = FastAPI(
     lifespan=lifespan
 )
 
+def truncate_utf8_bytes(s: str, max_bytes: int = 72) -> str:
+    """
+    Safely truncate a UTF-8 string to a maximum number of bytes,
+    ensuring no multi-byte character is broken.
+    """
+    encoded = s.encode("utf-8")
+    if len(encoded) <= max_bytes:
+        return s
+    # Truncate bytes safely
+    truncated = encoded[:max_bytes]
+    # Decode ignoring incomplete characters at the end
+    return truncated.decode("utf-8", errors="ignore")
+
 # ------------------------------------------------------------------------------
 # Health Endpoint
 # ------------------------------------------------------------------------------
@@ -47,7 +62,11 @@ def read_health():
 )
 def register(user_create: UserCreate, db: Session = Depends(get_db)):
     # Exclude confirm_password before passing data to User.register
-    user_data = user_create.dict(exclude={"confirm_password"})
+    user_data = user_create.model_dump(exclude={"confirm_password"})
+
+      # Safely truncate password to 72 bytes
+    user_data["password"] = truncate_utf8_bytes(user_data["password"])
+
     try:
         user = User.register(db, user_data)
         db.commit()
@@ -56,6 +75,11 @@ def register(user_create: UserCreate, db: Session = Depends(get_db)):
     except ValueError as e:
         db.rollback()
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
+    except IntegrityError:
+        db.rollback()
+        raise HTTPException(status_code=400, detail="User already exists")
+
+
 
 # ------------------------------------------------------------------------------
 # User Login Endpoints

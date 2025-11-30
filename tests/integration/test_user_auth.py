@@ -2,7 +2,6 @@
 
 import pytest
 from uuid import UUID
-import pydantic_core
 from sqlalchemy.exc import IntegrityError
 from app.models.user import User
 

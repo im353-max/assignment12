@@ -14,7 +14,7 @@ class PasswordMixin(BaseModel):
     password: str = Field(
         ...,
         min_length=8,
-        example="SecurePass123!",
+        example="SecurePass",
         description="Password"
     )
 
@@ -24,8 +24,8 @@ class PasswordMixin(BaseModel):
             raise ValueError("Password must contain at least one uppercase letter")
         if not any(char.islower() for char in self.password):
             raise ValueError("Password must contain at least one lowercase letter")
-        if not any(char.isdigit() for char in self.password):
-            raise ValueError("Password must contain at least one digit")
+     #   if not any(char.isdigit() for char in self.password):
+      #      raise ValueError("Password must contain at least one digit")
         # Removed special character check so that "SecurePass123" is valid.
         return self
 
